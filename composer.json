@@ -1,0 +1,31 @@
+{
+    "name": "bekir/framework",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/",
+            "app\\": "app/"
+        },
+        "files" : [
+            "config/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "bekiryazgann",
+            "email": "yazganebubekir4@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "^6.3",
+        "spatie/ignition": "^1.10",
+        "jenssegers/blade": "^1.4",
+        "nesbot/carbon": "^2.69",
+        "ext-openssl" : "*",
+        "ext-gd" : "*",
+        "symfony/process": "^6.3",
+        "monolog/monolog": "^3.4",
+        "symfony/console": "^6.3",
+        "spatie/laravel-route-attributes": "^1.19",
+        "vlucas/valitron": "^1.4"
+    }
+}

@@ -1,0 +1,21 @@
+#!bin/php
+<?php
+
+require __DIR__ . '/config/config.php';
+require PATH . '/vendor/autoload.php';
+
+use app\Commands\DefaultCommand;
+use app\Commands\HelloWorld;
+use app\Commands\Server;
+use Symfony\Component\Console\Application;
+
+$default = new DefaultCommand();
+$application = new Application();
+
+//< Commands
+$application->add($default);
+$application->add(new Server());
+//Commands >
+
+$application->setDefaultCommand($default->getName());
+$application->run();
