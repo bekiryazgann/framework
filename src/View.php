@@ -13,7 +13,7 @@ class View
 
     public function __construct()
     {
-        $this->blade = new Blade(PATH . '/public/view', PATH . '/storage/cache');
+        $this->blade = new Blade(PATH . '/public/view', PATH . '/storage/cache/view/');
         if (isset($_SERVER['HTTP_PRAGMA'])){
             $this->clearCache();
         }
@@ -35,7 +35,7 @@ class View
      */
     public function clearCache(): void
     {
-        $files = glob(PATH . '/public/storage/*.php');
+        $files = glob(PATH . '/storage/cache/view/*.php');
         foreach ($files as $file){
             unlink($file);
         }

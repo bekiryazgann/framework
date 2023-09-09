@@ -7,6 +7,7 @@ require PATH . '/vendor/autoload.php';
 use app\Commands\Cache;
 use app\Commands\DefaultCommand;
 use app\Commands\MakeController;
+use app\Commands\MakeMiddleware;
 use app\Commands\Server;
 use Symfony\Component\Console\Application;
 
@@ -18,6 +19,7 @@ $application->add($default);
 $application->add(new Server());
 $application->add(new Cache());
 $application->add(new MakeController());
+$application->add(new MakeMiddleware());
 //Commands >
 
 $application->setDefaultCommand($default->getName());

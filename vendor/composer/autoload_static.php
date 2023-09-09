@@ -15,12 +15,12 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '30a642aace73adcde76d762fcc6072c4' => __DIR__ . '/../..' . '/config/helpers.php',
@@ -272,6 +272,16 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Illuminate\\Database' => 
+            array (
+                0 => __DIR__ . '/..' . '/illuminate/database/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -297,6 +307,7 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c::$classMap;
 
         }, null, ClassLoader::class);

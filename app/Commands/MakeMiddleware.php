@@ -12,60 +12,53 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-#[asCommand('make:controller')]
-class MakeController extends Command
+#[asCommand('make:middleware')]
+class MakeMiddleware extends Command
 {
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $controllerName = $this->askForControllerName($input, $output);
-        $className = $this->formatControllerName($controllerName);
-        $requestName = '/' . slugify($controllerName);
-        $controllerName = PATH . '/app/Controllers/' . $className . '.php';
+        $middlewareName = $this->askForMiddlewareName($input, $output);
+        $className = $this->formatMiddlewareName($middlewareName);
+        $middlewareName = PATH . '/app/Middlewares/' . $className . '.php';
 
-        if (!file_exists($controllerName)){
-            if (touch($controllerName)){
+        if (!file_exists($middlewareName)){
+            if (touch($middlewareName)){
                 $content = "<?php
 
-namespace app\Controllers;
+namespace app\Middlewares;
 
-use src\Controller;
-use src\Router\Attributes\Route;
-
-class {$className} extends Controller
+class {$className}
 {
-    #[Route('{$requestName}')]
-    public function index(): string
+    public function handle(): bool
     {
-        return '{$requestName}';
+        return true;
     }
 }";
-                if (file_put_contents($controllerName, $content)){
-                    $output->writeln("<info>[SUCCESS] </info>Controller created as <fg=green;options=bold>" . str_replace(PATH ,'', $controllerName) . "</>");
+                if (file_put_contents($middlewareName, $content)){
+                    $output->writeln("<info>[SUCCESS] </info>Middleware created as <fg=green;options=bold>" . str_replace(PATH ,'', $middlewareName) . "</>");
                 } else {
-                    unlink($controllerName);
+                    unlink($middlewareName);
                     $output->writeln("<info>[ERROR]   </info><error>The file could not be created. Please check folder permissions</error>");
                 }
             } else {
                 $output->writeln("<info>[ERROR]   </info><error>The file could not be created. Please check folder permissions</error>");
             }
         } else {
-            $output->writeln('<info>[ERROR]   </info><error>A controller with this name already exists. Please delete that file first!</error>');
+            $output->writeln('<info>[ERROR]   </info><error>A middleware with this name already exists. Please delete that file first!</error>');
         }
-
-
 
         return Command::SUCCESS;
     }
 
-    private function askForControllerName(InputInterface $input, OutputInterface $output)
+    private function askForMiddlewareName(InputInterface $input, OutputInterface $output)
     {
         $helper = $this->getHelper('question');
-        $question = new Question('<info>Enter the Controller Name: </info>');
+        $question = new Question('<info>Enter the Middleware Name: </info>');
 
         return $helper->ask($input, $output, $question);
     }
 
-    private function formatControllerName(string $input): string
+    private function formatMiddlewareName(string $input): string
     {
         $input = str_replace('-', '', slugify($input));
         $input = ucfirst($input);

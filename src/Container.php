@@ -4,7 +4,6 @@ namespace src;
 
 
 use Spatie\Ignition\Ignition;
-use src\Router\AsRoute;
 use src\Router\RouteRegistrar;
 
 

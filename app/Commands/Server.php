@@ -60,13 +60,21 @@ class Server extends Command
 
             $seconds = mb_substr((string)microtime(true) - $this->data['start_micro'], 0, 6);
 
+
+
             [$date, $time] = explode(' ', $startTime);
             $nowDate =  '<fg=gray>' . $date . '</> ' . $time;
 
             $path = str_contains($this->data['path'], '-') ? trim(explode(' - ', $this->data['path'])[0]) : $this->data['path'];
             logger()->console("[" . $this->data['status'] . "] " . $this->data['method'] . $path . " ..................... ~" . $seconds . "s");
             $dots = str_repeat('<fg=gray>.</>', $terminal->getWidth() - (38 + mb_strlen($seconds) + mb_strlen($this->data['path']) + mb_strlen($this->data['method']) + mb_strlen($this->data['status'])));
-            $this->output->writeln("<fg=cyan>[SERVER]  </>{$nowDate} ".$this->responseCode($this->data['status'])." ".$this->data['method']."{$path} {$dots} <fg=gray>~{$seconds}s</>");
+
+            if ((float)$seconds > 1){
+                $seconds = "<fg=red;options=bold>~{$seconds}s</>";
+            } else {
+                $seconds = "<fg=gray;options=bold>~{$seconds}s</>";
+            }
+            $this->output->writeln("<fg=cyan>[SERVER]  </>{$nowDate} ".$this->responseCode($this->data['status'])." ".$this->data['method']."{$path} {$dots} {$seconds}");
         }
     }
 

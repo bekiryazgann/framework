@@ -6,12 +6,14 @@ with features inspired by other major frameworks such as Laravel and Symfony.
 
 ## TODOS
 
+- [x] Configuration
 - [x] Routing
     - [ ] URL Management
     - [x] Controllers
     - [x] Views
     - [x] Parameter and Patterns
     - [x] Routing With Attribute
+- [x] Blade Template Engine
 - [x] Date and Time Management
 - [x] Encrypt and Decrypt
 - [x] File Management
@@ -29,10 +31,13 @@ with features inspired by other major frameworks such as Laravel and Symfony.
 - [ ] CLI (Command Line Interface)
     - [x] Command System
     - [x] Serve Command
+      - [x] Drawing attention with red color for requests lasting 1 second or longer
+      - [ ] Restarting the server by pressing the `r` key
+      - [ ] Clearing the console by pressing the `c` key
     - [ ] Makers
         - [ ] Model
         - [x] Controller
-        - [ ] Middleware
+        - [x] Middleware
     - [x] Cache Cleaner
 - [x] Session
     - [x] Security (Session is encrypted with Crypto class)
@@ -40,13 +45,12 @@ with features inspired by other major frameworks such as Laravel and Symfony.
 - [x] Redirect
 - [x] Slug Generator
 - [x] UUID Generator
-- [ ] XSS and CSRF Protection
+- [x] XSS and CSRF Protection
 - [ ] Database
     - [ ] Migrations
     - [ ] Query Builder
     - [ ] ORM
     - [ ] Cache
-    -
 
 # Contact
 

@@ -16,10 +16,9 @@
     </div>
 <?php endif; ?>
 
-<?php echo e(uuid()->v4('asdasDSASD')); ?>
-
 <center>
     <form action="" method="POST">
+        <?php echo csrf_field(); ?>
         <div style="margin-top: 30px">
             <table>
                 <tr>

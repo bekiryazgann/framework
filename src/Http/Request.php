@@ -25,6 +25,17 @@ class Request extends HttpRequest
     {
         parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
         $this->validator = validator();
+        if (FRAMEWORK_CSRF ?? true){
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if (! csrf()->is_verify()) {
+                    redirect('referer')
+                        ->send([
+                            'title' => 'Geçersiz',
+                            'message' => 'Güvenlik katmanı ezilmeye çalışılıyor!!',
+                        ]);
+                }
+            }
+        }
     }
 
     /**

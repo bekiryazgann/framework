@@ -3,6 +3,7 @@
 namespace app\Controllers;
 
 use src\Controller;
+use src\Csrf;
 use src\Http\Request;
 use src\Router\Attributes\Route;
 

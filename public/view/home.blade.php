@@ -16,9 +16,9 @@
     </div>
 @endif
 
-{{uuid()->v4('asdasDSASD')}}
 <center>
     <form action="" method="POST">
+        @csrf
         <div style="margin-top: 30px">
             <table>
                 <tr>

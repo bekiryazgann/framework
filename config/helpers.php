@@ -1,14 +1,18 @@
 <?php
 
-use src\Carbon;
-use src\Crypto;
-use src\Logger;
-use src\Redirect;
-use src\Router\Router;
-use src\Error;
-use src\Session;
-use src\Slug\Slug;
-use src\UUid;
+use src\{
+    Error,
+    Session,
+    Slug\Slug,
+    UUid,
+    Redirect,
+    Router\Router,
+    Logger,
+    Csrf,
+    Crypto,
+    Carbon
+};
+
 use Valitron\Validator;
 
 /**
@@ -136,6 +140,23 @@ function slugify(string $string, array|string $options = null): string
 /**
  * @return \src\UUid
  */
-function uuid():UUid{
+function uuid(): UUid
+{
     return UUid::getInstance();
+}
+
+/**
+ * @return \src\Csrf
+ */
+function csrf(): Csrf
+{
+    return new Csrf();
+}
+
+/**
+ * @return string
+ */
+function csrf_field(): string
+{
+    return "<input type=\"hidden\" class=\"form-control\" name=\"_token\" value=\"" . \csrf()->get_token() . "\" />" . PHP_EOL;
 }
