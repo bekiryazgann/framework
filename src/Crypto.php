@@ -8,6 +8,10 @@ class Crypto
      * @var string
      */
     public string $key;
+
+    /**
+     * @var string
+     */
     public string $cipher;
 
     /**

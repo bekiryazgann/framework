@@ -4,6 +4,9 @@ namespace src;
 
 class Carbon extends \Carbon\Carbon
 {
+    /**
+     * @var \src\Carbon
+     */
     public static self $instance;
 
     /**

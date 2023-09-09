@@ -7,6 +7,9 @@ use src\Router\Attributes\Route;
 
 class RouteRegistrar
 {
+    /**
+     * @var \src\Router\Router
+     */
     private Router $router;
 
     /**
@@ -22,6 +25,9 @@ class RouteRegistrar
         $this->runRouter();
     }
 
+    /**
+     * @return void
+     */
     private function initializeRouter(): void
     {
         $this->router = new Router();
@@ -39,6 +45,9 @@ class RouteRegistrar
         }
     }
 
+    /**
+     * @return array
+     */
     private function getRouteClasses(): array
     {
         $controllerPath = $this->router->paths['controllers'];
@@ -75,6 +84,9 @@ class RouteRegistrar
         }
     }
 
+    /**
+     * @return void
+     */
     private function addRoutesToRouter(): void
     {
         // Routes are added during registration, no need for additional logic here.

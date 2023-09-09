@@ -2,9 +2,11 @@
 
 use src\Carbon;
 use src\Crypto;
+use src\Form;
 use src\Logger;
 use src\Router\Router;
 use src\Error;
+use src\Session;
 use Valitron\Validator;
 
 /**
@@ -65,6 +67,37 @@ function error(): Error
 /**
  * @return \src\Logger
  */
-function logger():Logger{
+function logger(): Logger
+{
     return Logger::getInstance();
+}
+
+/**
+ * @param $path
+ *
+ * @return string
+ */
+function site($path): string
+{
+    $base = defined(FRAMEWORK_BASE_URL) . '/' ?? '/';
+
+    return $base . $path;
+}
+
+/**
+ * @param $path
+ *
+ * @return string
+ */
+function assets($path): string
+{
+    return site('public/assets/' . $path);
+}
+
+/**
+ * @return \src\Session
+ */
+function session(): Session
+{
+    return Session::getInstance();
 }

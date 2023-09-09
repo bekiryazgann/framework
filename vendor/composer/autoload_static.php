@@ -103,6 +103,11 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         array (
             'Carbon\\' => 7,
         ),
+        'A' => 
+        array (
+            'Aura\\Session\\_Config\\' => 21,
+            'Aura\\Session\\' => 13,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -279,6 +284,14 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Aura\\Session\\_Config\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aura/session/config',
+        ),
+        'Aura\\Session\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aura/session/src',
         ),
     );
 

@@ -47,6 +47,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/aura/session" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-route-attributes" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/valitron" />
     </content>

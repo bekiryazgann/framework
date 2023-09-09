@@ -2,8 +2,6 @@
 
 namespace src;
 
-use http\Message\Body;
-
 class Controller
 {
     /**

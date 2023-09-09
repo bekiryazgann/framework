@@ -4,13 +4,26 @@ namespace src;
 
 class Upload
 {
-
+    /**
+     * @var \src\Upload\Upload
+     */
     public \src\Upload\Upload $upload;
 
+    /**
+     * @var string
+     */
     public string $file;
 
+    /**
+     * @var \src\Upload
+     */
     public static self $instance;
 
+    /**
+     * @param $name
+     *
+     * @return self
+     */
     public static function getInstance($name): self
     {
         if (! isset(self::$instance)) {
@@ -20,6 +33,9 @@ class Upload
         return self::$instance;
     }
 
+    /**
+     * @param $name
+     */
     public function __construct($name)
     {
         $this->upload = new \src\Upload\Upload($_FILES[$name]);

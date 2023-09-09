@@ -30,6 +30,9 @@ class View
         return $this->blade->render($view, $data);
     }
 
+    /**
+     * @return void
+     */
     public function clearCache(): void
     {
         $files = glob(PATH . '/public/storage/*.php');

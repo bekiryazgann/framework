@@ -20,7 +20,11 @@ class Container
      */
     public function __construct()
     {
-        $this->ignition = Ignition::make()->register();
+        $this->ignition = Ignition::make()
+            ->registerMiddleware([
+                Reporter::class,
+            ])
+            ->register();
         new RouteRegistrar();
     }
 }

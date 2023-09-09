@@ -8,6 +8,12 @@ use src\Router\Attributes\Route;
 
 class Home extends Controller
 {
+
+    /**
+     * @param \src\Http\Request $request
+     *
+     * @return string
+     */
     #[Route('/')]
     public function index(Request $request): string
     {
@@ -27,6 +33,9 @@ class Home extends Controller
         return $this->view('home');
     }
 
+    /**
+     * @return string
+     */
     #[Route('/about')]
     public function about(): string
     {

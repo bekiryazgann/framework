@@ -30,7 +30,7 @@ class Upload
      * @access public
      * @var string
      */
-    var $file_src_name_body;
+    var string $file_src_name_body;
 
     /**
      * Uploaded file name extension
@@ -38,7 +38,7 @@ class Upload
      * @access public
      * @var string
      */
-    var $file_src_name_ext;
+    var string $file_src_name_ext;
 
     /**
      * Uploaded file MIME type
@@ -46,7 +46,7 @@ class Upload
      * @access public
      * @var string
      */
-    var $file_src_mime;
+    var string $file_src_mime;
 
     /**
      * Uploaded file size, in bytes

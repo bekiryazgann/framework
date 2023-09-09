@@ -49,4 +49,6 @@ return array(
     'Illuminate\\Bus\\' => array($vendorDir . '/illuminate/bus'),
     'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
+    'Aura\\Session\\_Config\\' => array($vendorDir . '/aura/session/config'),
+    'Aura\\Session\\' => array($vendorDir . '/aura/session/src'),
 );

@@ -64,7 +64,6 @@ class RouterCommand
         $this->response = $response;
         $this->middlewares = $middlewares;
 
-        // Execute general Middlewares
         foreach ($this->middlewares['middlewares'] as $middleware) {
             $this->beforeAfter($middleware);
         }

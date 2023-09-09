@@ -21,6 +21,7 @@ use Spatie\Ignition\Solutions\SolutionProviders\BadMethodCallSolutionProvider;
 use Spatie\Ignition\Solutions\SolutionProviders\MergeConflictSolutionProvider;
 use Spatie\Ignition\Solutions\SolutionProviders\SolutionProviderRepository;
 use Spatie\Ignition\Solutions\SolutionProviders\UndefinedPropertySolutionProvider;
+use src\Logger;
 use Throwable;
 
 class Ignition
@@ -171,7 +172,7 @@ class Ignition
         return $this->setTheme('dark');
     }
 
-    /** @deprecated Use `setTheme($theme)` instead */
+    /** @deprecated Use `setTheme($theme)`  instead */
     public function theme(string $theme): self
     {
         return $this->setTheme($theme);
@@ -241,10 +242,10 @@ class Ignition
     {
         error_reporting(-1);
 
-        /** @phpstan-ignore-next-line  */
+        /** @phpstan-ignore-next-line */
         set_error_handler([$this, 'renderError']);
 
-        /** @phpstan-ignore-next-line  */
+        /** @phpstan-ignore-next-line */
         set_exception_handler([$this, 'handleException']);
 
         return $this;
@@ -267,6 +268,8 @@ class Ignition
         int $line = 0,
         array $context = []
     ): void {
+        $error = 'message: "' . $message . '"     file: "' . $file . ':' . $line;
+        logger()->error($message . ' ' . $error);
         throw new ErrorException($message, 0, $level, $file, $line);
     }
 
@@ -287,7 +290,6 @@ class Ignition
         if ($this->flare->apiTokenSet() && $this->inProductionEnvironment !== false) {
             $this->flare->report($throwable, report: $report);
         }
-
         return $report;
     }
 

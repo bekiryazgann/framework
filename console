@@ -4,8 +4,8 @@
 require __DIR__ . '/config/config.php';
 require PATH . '/vendor/autoload.php';
 
+use app\Commands\Cache;
 use app\Commands\DefaultCommand;
-use app\Commands\HelloWorld;
 use app\Commands\Server;
 use Symfony\Component\Console\Application;
 
@@ -15,6 +15,7 @@ $application = new Application();
 //< Commands
 $application->add($default);
 $application->add(new Server());
+$application->add(new Cache());
 //Commands >
 
 $application->setDefaultCommand($default->getName());
