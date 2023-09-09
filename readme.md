@@ -7,7 +7,7 @@ with features inspired by other major frameworks such as Laravel and Symfony.
 ## TODOS
 
 - [x] Routing
-    - [-] URL Management
+    - [ ] URL Management
     - [x] Controllers
     - [x] Views
     - [x] Parameter and Patterns
@@ -23,26 +23,30 @@ with features inspired by other major frameworks such as Laravel and Symfony.
     - [x] GZIP Compression
 - [x] Form
     - [x] Validation
-- [ ] XSS and CSRF Protection
 - [x] Logs
-  - [x] Console Log
-  - [x] Error Log
+    - [x] Console Log
+    - [x] Error Log
 - [ ] CLI (Command Line Interface)
     - [x] Command System
     - [x] Serve Command
-    - [ ] Model, Controller, Middleware, Command Generator
+    - [ ] Makers
+        - [ ] Model
+        - [x] Controller
+        - [ ] Middleware
     - [x] Cache Cleaner
+- [x] Session
+    - [x] Security (Session is encrypted with Crypto class)
+    - [x] Management
+- [x] Redirect
+- [x] Slug Generator
+- [x] UUID Generator
+- [ ] XSS and CSRF Protection
 - [ ] Database
     - [ ] Migrations
     - [ ] Query Builder
     - [ ] ORM
     - [ ] Cache
-- [x] Session
-  - [x] Security (Session is encrypted with Crypto class)
-  - [x] Management
-- [x] Redirect
-- [x] Slug Generator
-- [ ] UUID Generator
+    -
 
 # Contact
 
