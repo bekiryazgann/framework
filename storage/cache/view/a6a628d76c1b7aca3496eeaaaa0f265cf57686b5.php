@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="zoom:2;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,37 +8,25 @@
     <link rel="stylesheet" href="<?php echo e(assets('css/app.css')); ?>">
 </head>
 <body>
-
 <?php if($message = json_decode(session()->get('system-message'))): ?>
     <div style="max-width: 350px;border: 1px solid #ddd; position: absolute; top: 20px; right: 20px; padding: 15px; border-radius: 8px; transition: 500ms all;" id="system-message">
         <h3 style="font-size: 20px; font-family: Arial, sans-serif; margin-bottom: 4px;"><?php echo $message->title; ?></h3>
         <p style="font-size: 15px; font-family: Arial, sans-serif;"><?php echo $message->message; ?></p>
     </div>
 <?php endif; ?>
-
 <center>
-    <form action="" method="POST">
-        <?php echo csrf_field(); ?>
-        <div style="margin-top: 30px">
-            <table>
-                <tr>
-                    <td><label for="name"> Name </label></td>
-                    <td><input type="text" id="name" name="name"></td>
-                </tr>
-                <tr>
-                    <td><label for="surname"> Surname </label></td>
-                    <td><input type="text" id="surname" name="surname"></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div style="display: flex; justify-content: end;">
-                            <button type="submit">Giriş Yap</button>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </form>
+    <h3 style="margin-bottom: 20px;"> Todo </h3>
+    <ul style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px">
+        <?php $__currentLoopData = $todos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $todo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li style="text-align: left;">
+                <label>
+                    <input type="checkbox" <?php echo e($todo->completed == '1' ? 'checked' : ''); ?>>
+                    <?php echo e($todo->title); ?>
+
+                </label>
+            </li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </ul>
 </center>
 <script src="<?php echo e(assets('js/app.js')); ?>"></script>
 

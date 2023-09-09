@@ -4,6 +4,7 @@ namespace src;
 
 
 use Spatie\Ignition\Ignition;
+use src\Database\Database;
 use src\Router\RouteRegistrar;
 
 
@@ -24,6 +25,7 @@ class Container
                 Reporter::class,
             ])
             ->register();
+        new Database();
         new RouteRegistrar();
     }
 }

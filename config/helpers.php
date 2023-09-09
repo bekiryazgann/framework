@@ -13,6 +13,8 @@ use src\{
     Carbon
 };
 
+use Illuminate\Database\Capsule\Manager;
+use Illuminate\Database\Query\Builder;
 use Valitron\Validator;
 
 /**
@@ -159,4 +161,14 @@ function csrf(): Csrf
 function csrf_field(): string
 {
     return "<input type=\"hidden\" class=\"form-control\" name=\"_token\" value=\"" . \csrf()->get_token() . "\" />" . PHP_EOL;
+}
+
+/**
+ * @param $table
+ *
+ * @return \Illuminate\Database\Query\Builder
+ */
+function db($table): Builder
+{
+    return Manager::table($table);
 }

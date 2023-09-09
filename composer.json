@@ -24,8 +24,8 @@
         "ext-gd" : "*",
         "symfony/process": "^6.3",
         "monolog/monolog": "^3.4",
-        "symfony/console": "^6.3",
+        "symfony/console": "^5.1.4",
         "vlucas/valitron": "^1.4",
-        "illuminate/database": "^1.1"
+        "illuminate/database": "^8.40"
     }
 }
