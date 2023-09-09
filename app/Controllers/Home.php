@@ -23,10 +23,15 @@ class Home extends Controller
                 'surname',
             ])->labels([
                 'name' => 'İsim',
-                'surname' => 'Soyisim'
+                'surname' => 'Soyisim',
             ]);
             if ($request->validate()) {
                 echo "tamam geçtin";
+            } else {
+                redirect()->send([
+                    'title' => 'Geçemedin hocam',
+                    'message' => 'bişeyleri eksik ya da yanlış yazdıysan geçirmem KB',
+                ]);
             }
         }
 

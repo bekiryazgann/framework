@@ -28,8 +28,6 @@ return array(
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
-    'Spatie\\RouteAttributes\\Database\\Factories\\' => array($vendorDir . '/spatie/laravel-route-attributes/database/factories'),
-    'Spatie\\RouteAttributes\\' => array($vendorDir . '/spatie/laravel-route-attributes/src'),
     'Spatie\\Ignition\\' => array($vendorDir . '/spatie/ignition/src'),
     'Spatie\\FlareClient\\' => array($vendorDir . '/spatie/flare-client-php/src'),
     'Spatie\\Backtrace\\' => array($vendorDir . '/spatie/backtrace/src'),
@@ -49,6 +47,4 @@ return array(
     'Illuminate\\Bus\\' => array($vendorDir . '/illuminate/bus'),
     'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
-    'Aura\\Session\\_Config\\' => array($vendorDir . '/aura/session/config'),
-    'Aura\\Session\\' => array($vendorDir . '/aura/session/src'),
 );

@@ -40,7 +40,9 @@ with features inspired by other major frameworks such as Laravel and Symfony.
 - [x] Session
   - [x] Security (Session is encrypted with Crypto class)
   - [x] Management
-- [ ] Redirect
+- [x] Redirect
+- [x] Slug Generator
+- [ ] UUID Generator
 
 # Contact
 

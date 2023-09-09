@@ -63,8 +63,6 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
             'Symfony\\Component\\HttpFoundation\\' => 33,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
-            'Spatie\\RouteAttributes\\Database\\Factories\\' => 42,
-            'Spatie\\RouteAttributes\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
             'Spatie\\Backtrace\\' => 17,
@@ -102,11 +100,6 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         'C' => 
         array (
             'Carbon\\' => 7,
-        ),
-        'A' => 
-        array (
-            'Aura\\Session\\_Config\\' => 21,
-            'Aura\\Session\\' => 13,
         ),
     );
 
@@ -199,14 +192,6 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Spatie\\RouteAttributes\\Database\\Factories\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spatie/laravel-route-attributes/database/factories',
-        ),
-        'Spatie\\RouteAttributes\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spatie/laravel-route-attributes/src',
-        ),
         'Spatie\\Ignition\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/ignition/src',
@@ -284,14 +269,6 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
-        'Aura\\Session\\_Config\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/aura/session/config',
-        ),
-        'Aura\\Session\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/aura/session/src',
         ),
     );
 

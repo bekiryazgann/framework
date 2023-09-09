@@ -2,11 +2,13 @@
 
 use src\Carbon;
 use src\Crypto;
-use src\Form;
 use src\Logger;
+use src\Redirect;
 use src\Router\Router;
 use src\Error;
 use src\Session;
+use src\Slug\Slug;
+use src\UUid;
 use Valitron\Validator;
 
 /**
@@ -73,11 +75,11 @@ function logger(): Logger
 }
 
 /**
- * @param $path
+ * @param string $path
  *
  * @return string
  */
-function site($path): string
+function site(string $path = ''): string
 {
     $base = defined(FRAMEWORK_BASE_URL) . '/' ?? '/';
 
@@ -100,4 +102,40 @@ function assets($path): string
 function session(): Session
 {
     return Session::getInstance();
+}
+
+/**
+ * @param string|null $url
+ *
+ * @return \src\Redirect
+ */
+function redirect(string|null $url = null): Redirect
+{
+    return Redirect::getInstance($url);
+}
+
+/**
+ * @return \src\Slug\Slug
+ */
+function slug(): Slug
+{
+    return Slug::getInstance();
+}
+
+/**
+ * @param string $string
+ * @param array|string|null $options
+ *
+ * @return string
+ */
+function slugify(string $string, array|string $options = null): string
+{
+    return slug()->slugify($string, $options);
+}
+
+/**
+ * @return \src\UUid
+ */
+function uuid():UUid{
+    return UUid::getInstance();
 }

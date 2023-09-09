@@ -12,9 +12,9 @@ class Session
     public static self $instance;
 
     /**
-     * @var \Aura\Session\Segment
+     * @var int|float
      */
-    private \Aura\Session\Segment $segment;
+    public int|float $expire;
 
     /**
      * @return self
@@ -30,9 +30,7 @@ class Session
 
     public function __construct()
     {
-        $session_factory = new SessionFactory;
-        $session = $session_factory->newInstance($_COOKIE);
-        $this->segment = $session->getSegment('Framework\src\Session');
+        $this->expire = time() + 3600 * 24 * 7;
     }
 
     /**
@@ -43,7 +41,7 @@ class Session
      */
     public function set($key, $value): void
     {
-        $this->segment->set($key, crypto()->encrypt($value));
+        setcookie(md5(crypto()->encrypt($key)), crypto()->encrypt($value), $this->expire * 123, '/');
     }
 
     /**
@@ -53,8 +51,40 @@ class Session
      */
     public function get($key): string|false
     {
-        if ($value = $this->segment->get($key)) {
-            return crypto()->decrypt($value);
+        if (isset($_COOKIE[md5(crypto()->encrypt($key))])) {
+            return crypto()->decrypt($_COOKIE[md5(crypto()->encrypt($key))]);
+        }
+
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function clear(): bool
+    {
+        foreach ($_COOKIE as $key => $value) {
+            $_COOKIE[$key] = '';
+            setcookie($key, '', -$this->expire, '/');
+            unset($_COOKIE[$key]);
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $key
+     *
+     * @return bool
+     */
+    public function delete($key): bool
+    {
+        if (isset($_COOKIE[md5(crypto()->encrypt($key))])) {
+            $_COOKIE[md5(crypto()->encrypt($key))] = '';
+            setcookie(md5(crypto()->encrypt($key)), '', -$this->expire * 360, '/');
+            unset($_COOKIE[md5(crypto()->encrypt($key))]);
+
+            return true;
         }
 
         return false;
@@ -62,13 +92,13 @@ class Session
 
     /**
      * @param $key
-     * @param $val
+     * @param $value
      *
      * @return void
      */
-    public function setFlash($key, $val): void
+    public function setFlash($key, $value): void
     {
-        $this->segment->setFlash($key, crypto()->encrypt($val));
+        setcookie(md5(crypto()->encrypt($key)), crypto()->encrypt($value), time() + 1, '/');
     }
 
     /**
@@ -78,27 +108,24 @@ class Session
      */
     public function getFlash($key): string|false
     {
-        if ($value = $this->segment->getFlash($key)) {
-            return crypto()->decrypt($value);
+        if (isset($_COOKIE[md5(crypto()->encrypt($key))])) {
+            return crypto()->decrypt($_COOKIE[md5(crypto()->encrypt($key))]);
         }
 
         return false;
     }
 
     /**
-     * @return void
+     * @return array
      */
-    public function clearFlash(): void
+    public function getAll(): array
     {
-        $this->segment->clearFlash();
-        $this->segment->clearFlashNow();
-    }
+        $sessions = [];
 
-    /**
-     * @return void
-     */
-    public function clear(): void
-    {
-        $this->segment->clear();
+        foreach ($_COOKIE as $key => $value) {
+            $sessions[$key] = crypto()->decrypt($value);
+        }
+
+        return $sessions;
     }
 }
