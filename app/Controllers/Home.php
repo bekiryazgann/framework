@@ -19,6 +19,6 @@ class Home extends Controller
     public function index(Request $request): string
     {
         $todos = Todo::all();
-        return $this->view('home', compact('todos'));
+        return $this->view('test', compact('todos'));
     }
 }
