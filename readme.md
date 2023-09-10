@@ -46,11 +46,11 @@ with features inspired by other major frameworks such as Laravel and Symfony.
 - [x] Slug Generator
 - [x] UUID Generator
 - [x] XSS and CSRF Protection
-- [ ] Database
+- [x] Database
     - [ ] Migrations
-    - [ ] Query Builder
-    - [ ] ORM
-    - [ ] Cache
+    - [x] Query Builder
+    - [x] ORM
+    - [x] Cache
 
 # Contact
 

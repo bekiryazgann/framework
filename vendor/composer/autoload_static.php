@@ -24,6 +24,7 @@ class ComposerStaticInit232890d583bfa45a9c19ccd4ce5af21c
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'ef65a1626449d89d0811cf9befce46f0' => __DIR__ . '/..' . '/illuminate/events/functions.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
+        '393a138008dde4097a22a58deaed3158' => __DIR__ . '/../..' . '/config/config.php',
         '30a642aace73adcde76d762fcc6072c4' => __DIR__ . '/../..' . '/config/helpers.php',
     );
 

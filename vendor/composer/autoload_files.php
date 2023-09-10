@@ -23,5 +23,6 @@ return array(
     '667aeda72477189d0494fecd327c3641' => $vendorDir . '/symfony/var-dumper/Resources/functions/dump.php',
     'ef65a1626449d89d0811cf9befce46f0' => $vendorDir . '/illuminate/events/functions.php',
     '3bd81c9b8fcc150b69d8b63b4d2ccf23' => $vendorDir . '/spatie/flare-client-php/src/helpers.php',
+    '393a138008dde4097a22a58deaed3158' => $baseDir . '/config/config.php',
     '30a642aace73adcde76d762fcc6072c4' => $baseDir . '/config/helpers.php',
 );

@@ -3,7 +3,7 @@
         'name' => 'bekir/framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6a97488f6f8362bd4aa076da02eb4b650837c015',
+        'reference' => '229a5314f1741307cb95726600e5bcaf51a5e588',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'bekir/framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6a97488f6f8362bd4aa076da02eb4b650837c015',
+            'reference' => '229a5314f1741307cb95726600e5bcaf51a5e588',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

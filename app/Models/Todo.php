@@ -10,6 +10,5 @@ use src\Database\Model;
 class Todo extends Model
 {
     protected $table = 'todo';
-    public static string $cache_key = 'todo';
     public $timestamps = false;
 }
