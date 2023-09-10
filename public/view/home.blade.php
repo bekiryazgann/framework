@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" style="zoom:2;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Burası </title>
-    <link rel="stylesheet" href="{{assets('css/app.css')}}">
+    {{--<link rel="stylesheet" href="{{assets('css/app.css')}}">--}}
 </head>
 <body>
 @if($message = json_decode(session()->get('system-message')))
@@ -15,6 +15,11 @@
     </div>
 @endif
 <center>
+    <form method="POST">
+        @csrf
+        <input type="text" name="title" placeholder="Todo" style="margin-right: 4px">
+        <button>Ekle</button>
+    </form>
     <h3 style="margin-bottom: 20px;"> Todo </h3>
     <ul style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px">
         @foreach($todos as $todo)
@@ -27,7 +32,7 @@
         @endforeach
     </ul>
 </center>
-<script src="{{assets('js/app.js')}}"></script>
+{{--<script src="{{assets('js/app.js')}}"></script>--}}
 
 </body>
 </html>

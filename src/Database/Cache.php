@@ -27,10 +27,27 @@ class Cache implements CacheInterface
      */
     public string $key;
 
+    public static self $instance;
+
+
+    /**
+     * @param string $key
+     *
+     * @return \src\Database\Cache
+     */
+    public static function getInstance(string $key = ''): Cache
+    {
+        if (! isset(self::$instance)) {
+            self::$instance = new self($key);
+        }
+
+        return self::$instance;
+    }
+
     /**
      * @param string $key
      */
-    public function __construct($key)
+    public function __construct($key = '')
     {
         $this->key = $key;
         $this->path = PATH . '/storage/cache/database/';
@@ -40,7 +57,6 @@ class Cache implements CacheInterface
             $this->flush();
         }
     }
-
 
     /**
      * @param string $key

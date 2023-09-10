@@ -14,17 +14,16 @@ class Model extends EloquentModel
         self::$cache_key = $this->getTable();
     }
 
-    public static function all($columns = ['*']): mixed
+    /*public static function all($columns = ['*']): mixed
     {
         $data = [];
         $cache = new Cache('all_' . self::$cache_key);
         if ($cache->get()) {
             return json_decode(json_encode($cache->get()));
         }
-        if (!$cache->get()) {
-            $data = parent::all($columns)->toArray();
-            $cache->set($data);
-        }
+        $data = parent::all($columns)->toArray();
+        $cache->set($data);
+
         return json_decode(json_encode($data));
-    }
+    }*/
 }

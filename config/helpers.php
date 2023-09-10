@@ -1,6 +1,6 @@
 <?php
 
-use src\{
+use src\{Database\Cache,
     Error,
     Session,
     Slug\Slug,
@@ -10,8 +10,7 @@ use src\{
     Logger,
     Csrf,
     Crypto,
-    Carbon
-};
+    Carbon};
 
 use Illuminate\Database\Capsule\Manager;
 use Illuminate\Database\Query\Builder;
@@ -171,4 +170,13 @@ function csrf_field(): string
 function db($table): Builder
 {
     return Manager::table($table);
+}
+
+/**
+ * @param string $key
+ *
+ * @return \src\Database\Cache
+ */
+function cache(string $key = ''):Cache{
+    return Cache::getInstance($key);
 }
