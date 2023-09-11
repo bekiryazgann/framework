@@ -7,6 +7,9 @@ use ReflectionClass;
 
 class Database
 {
+    /**
+     * @var \Illuminate\Database\Capsule\Manager
+     */
     public Manager $manager;
 
     /**

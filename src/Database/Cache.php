@@ -27,6 +27,9 @@ class Cache implements CacheInterface
      */
     public string $key;
 
+    /**
+     * @var \src\Database\Cache
+     */
     public static self $instance;
 
 

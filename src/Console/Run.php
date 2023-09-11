@@ -10,6 +10,9 @@ use app\Commands\Server;
 
 class Run
 {
+    /**
+     * @var \src\Console\Application
+     */
     public Application $application;
 
     /**

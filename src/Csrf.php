@@ -5,7 +5,9 @@ namespace src;
 
 class Csrf
 {
-
+    /**
+     * @var string
+     */
     public string $key;
 
     public function __construct()

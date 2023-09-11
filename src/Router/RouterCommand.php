@@ -15,7 +15,7 @@ use src\Http\Response;
 class RouterCommand
 {
     /** @var RouterCommand Class instance variable */
-    public static $instance;
+    public static RouterCommand $instance;
 
     /** @var string */
     protected string $baseFolder;
@@ -49,14 +49,13 @@ class RouterCommand
      * @param array $middlewares
      */
     public function __construct(
-        string   $baseFolder,
-        array    $paths,
-        array    $namespaces,
-        Request  $request,
+        string $baseFolder,
+        array $paths,
+        array $namespaces,
+        Request $request,
         Response $response,
-        array    $middlewares
-    )
-    {
+        array $middlewares
+    ) {
         $this->baseFolder = $baseFolder;
         $this->paths = $paths;
         $this->namespaces = $namespaces;
@@ -103,15 +102,14 @@ class RouterCommand
      * @return RouterCommand
      */
     public static function getInstance(
-        string   $baseFolder,
-        array    $paths,
-        array    $namespaces,
-        Request  $request,
+        string $baseFolder,
+        array $paths,
+        array $namespaces,
+        Request $request,
         Response $response,
-        array    $middlewares
-    ): ?RouterCommand
-    {
-        if (null === self::$instance) {
+        array $middlewares
+    ): ?RouterCommand {
+        if (! isset(self::$instance)) {
             self::$instance = new static(
                 $baseFolder, $paths, $namespaces,
                 $request, $response, $middlewares
@@ -158,6 +156,7 @@ class RouterCommand
                         $info
                     );
                 }
+
                 return $response;
             }
 
@@ -179,17 +178,17 @@ class RouterCommand
     public function runRoute(Closure|string $command, array $params = []): mixed
     {
         $info = $this->getControllerInfo();
-        if (!is_object($command)) {
+        if (! is_object($command)) {
             $invokable = ! str_contains($command, '@');
             $class = $command;
-            if (!$invokable) {
+            if (! $invokable) {
                 [$class, $method] = explode('@', $command);
             }
 
             $class = str_replace([$info['namespace'], '\\', '.'], ['', '/', '/'], $class);
 
             $controller = $this->resolveClass($class, $info['path'], $info['namespace']);
-            if (!$invokable && !method_exists($controller, $method)) {
+            if (! $invokable && ! method_exists($controller, $method)) {
                 $this->exception("{$method} method is not found in {$class} class.");
             }
 
@@ -199,7 +198,7 @@ class RouterCommand
                 }
             }
 
-            $response = $this->runMethodWithParams([$controller, (!$invokable ? $method : '__invoke')], $params);
+            $response = $this->runMethodWithParams([$controller, (! $invokable ? $method : '__invoke')], $params);
 
             if (property_exists($controller, 'middlewareAfter') && is_array($controller->middlewareAfter)) {
                 foreach ($controller->middlewareAfter as $middleware) {
@@ -227,12 +226,12 @@ class RouterCommand
     {
         $class = str_replace([$namespace, '\\'], ['', '/'], $class);
         $file = realpath("{$path}/{$class}.php");
-        if (!file_exists($file)) {
+        if (! file_exists($file)) {
             $this->exception("{$class} class is not found. Please check the file.");
         }
 
         $class = $namespace . str_replace('/', '\\', $class);
-        if (!class_exists($class)) {
+        if (! class_exists($class)) {
             require_once($file);
         }
 
@@ -253,6 +252,7 @@ class RouterCommand
             : new ReflectionFunction($function);
         $parameters = $this->resolveCallbackParameters($reflection, $params);
         $response = call_user_func_array($function, $parameters);
+
         return $this->sendResponse($response);
     }
 
@@ -267,14 +267,14 @@ class RouterCommand
     {
         $parameters = [];
         foreach ($reflection->getParameters() as $key => $param) {
-            $class = $param->getType() && !$param->getType()->isBuiltin()
+            $class = $param->getType() && ! $param->getType()->isBuiltin()
                 ? new ReflectionClass($param->getType()->getName())
                 : null;
-            if (!is_null($class) && $class->isInstance($this->request)) {
+            if (! is_null($class) && $class->isInstance($this->request)) {
                 $parameters[] = $this->request;
-            } elseif (!is_null($class) && $class->isInstance($this->response)) {
+            } elseif (! is_null($class) && $class->isInstance($this->response)) {
                 $parameters[] = $this->response;
-            } elseif (!is_null($class)) {
+            } elseif (! is_null($class)) {
                 $parameters[] = null;
             } else {
                 if (empty($uriParams)) {
@@ -309,7 +309,7 @@ class RouterCommand
         }
         $this->markedMiddlewares[] = $command;
 
-        if (!method_exists($controller, $middlewareMethod)) {
+        if (! method_exists($controller, $middlewareMethod)) {
             $this->exception("{$middlewareMethod}() method is not found in {$middleware} class.");
         }
 
@@ -352,12 +352,13 @@ class RouterCommand
     {
         if (is_array($response) || str_contains($this->request->headers->get('Accept') ?? '', 'application/json')) {
             $this->response->headers->set('Content-Type', 'application/json');
+
             return $this->response
                 ->setContent($response instanceof Response ? $response->getContent() : json_encode($response))
                 ->send();
         }
 
-        if (!is_string($response)) {
+        if (! is_string($response)) {
             return $response instanceof Response ? $response->send() : print($response);
         }
 

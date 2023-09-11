@@ -2,8 +2,6 @@
 
 namespace src;
 
-use Aura\Session\SessionFactory;
-
 class Session
 {
     /**

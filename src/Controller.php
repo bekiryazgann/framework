@@ -14,7 +14,6 @@ class Controller
      */
     public Carbon $carbon;
 
-
     public function __construct()
     {
         $this->view = new View();
@@ -27,7 +26,7 @@ class Controller
      *
      * @return string
      */
-    public function view(string $view, array $data = []):string
+    public function view(string $view, array $data = []): string
     {
         return $this->view->show($view, $data);
     }

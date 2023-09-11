@@ -54,7 +54,7 @@ class Upload
      * @access public
      * @var double
      */
-    var $file_src_size;
+    var float $file_src_size;
 
     /**
      * Holds eventual PHP error code from $_FILES
@@ -62,7 +62,7 @@ class Upload
      * @access public
      * @var string
      */
-    var $file_src_error;
+    var string $file_src_error;
 
     /**
      * Uloaded file name, including server path
@@ -70,7 +70,7 @@ class Upload
      * @access public
      * @var string
      */
-    var $file_src_pathname;
+    var string $file_src_pathname;
 
     /**
      * Uloaded file name temporary copy
@@ -78,7 +78,7 @@ class Upload
      * @access private
      * @var string
      */
-    var $file_src_temp;
+    var string $file_src_temp;
 
     /**
      * Destination file name
@@ -86,7 +86,7 @@ class Upload
      * @access public
      * @var string
      */
-    var $file_dst_path;
+    var string $file_dst_path;
 
     /**
      * Destination file name
@@ -94,7 +94,7 @@ class Upload
      * @access public
      * @var string
      */
-    var $file_dst_name;
+    var string $file_dst_name;
 
     /**
      * Destination file name body (i.e. without extension)

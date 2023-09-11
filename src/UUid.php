@@ -9,6 +9,9 @@ class UUid
      */
     public static self $instance;
 
+    /**
+     * @return self
+     */
     public static function getInstance(): self
     {
         if (! isset(self::$instance)) {
