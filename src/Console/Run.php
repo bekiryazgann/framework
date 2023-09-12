@@ -6,6 +6,7 @@ use app\Commands\Cache;
 use app\Commands\DefaultCommand;
 use app\Commands\MakeController;
 use app\Commands\MakeMiddleware;
+use app\Commands\MakeModel;
 use app\Commands\Server;
 
 class Run
@@ -28,6 +29,7 @@ class Run
         $this->application->add(new Cache());
         $this->application->add(new MakeController());
         $this->application->add(new MakeMiddleware());
+        $this->application->add(new MakeModel());
 
         $this->application->setDefaultCommand($default->getName());
         $this->application->run();

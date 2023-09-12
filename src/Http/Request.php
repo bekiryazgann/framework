@@ -20,6 +20,8 @@ class Request extends HttpRequest
      * @param array $files
      * @param array $server
      * @param $content
+     *
+     * @throws \Exception
      */
     public function __construct(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null)
     {
@@ -28,11 +30,7 @@ class Request extends HttpRequest
         if (FRAMEWORK_CSRF ?? true){
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (! csrf()->is_verify()) {
-                    redirect('referer')
-                        ->send([
-                            'title' => 'Geçersiz',
-                            'message' => 'Güvenlik katmanı ezilmeye çalışılıyor!!',
-                        ]);
+                    throw new \Exception('Trying to crush the security layer. application has been stopped');
                 }
             }
         }
@@ -70,11 +68,14 @@ class Request extends HttpRequest
     }
 
     /**
-     * @return bool
+     * @return array|bool
      */
-    public function validate(): bool
+    public function validate(): array|bool
     {
-        return $this->validator->validate();
+        if ($this->validator->validate()){
+            return $this->validator->data();
+        }
+        return false;
     }
 
     /**
