@@ -8,7 +8,6 @@ with features inspired by other major frameworks such as Laravel and Symfony.
 
 - [x] Configuration
 - [x] Routing
-    - [ ] URL Management
     - [x] Controllers
     - [x] Views
     - [x] Parameter and Patterns
@@ -34,8 +33,8 @@ with features inspired by other major frameworks such as Laravel and Symfony.
       - [x] Drawing attention with red color for requests lasting 1 second or longer
       - [ ] Restarting the server by pressing the `r` key
       - [ ] Clearing the console by pressing the `c` key
-    - [ ] Makers
-        - [ ] Model
+    - [x] Makers
+        - [x] Model
         - [x] Controller
         - [x] Middleware
     - [x] Cache Cleaner

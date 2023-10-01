@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Burası </title>
-    {{--<link rel="stylesheet" href="{{assets('css/app.css')}}">--}}
+    <link rel="stylesheet" href="{{assets('css/app.css')}}">
 </head>
 <body>
 @if($message = json_decode(session()->get('system-message')))
@@ -14,25 +14,7 @@
         <p style="font-size: 15px; font-family: Arial, sans-serif;">{!! $message->message !!}</p>
     </div>
 @endif
-<center>
-    <form method="POST">
-        @csrf
-        <input type="text" name="title" placeholder="Todo" style="margin-right: 4px">
-        <button>Ekle</button>
-    </form>
-    <h3 style="margin-bottom: 20px;"> Todo </h3>
-    <ul style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px">
-        @foreach($todos as $todo)
-            <li style="text-align: left;">
-                <label>
-                    <input type="checkbox" {{ $todo->completed == '1' ? 'checked' : '' }}>
-                    {{$todo->title}}
-                </label>
-            </li>
-        @endforeach
-    </ul>
-</center>
-{{--<script src="{{assets('js/app.js')}}"></script>--}}
-
+2213123
+<script src="{{assets('js/app.js')}}" type="module"></script>
 </body>
 </html>

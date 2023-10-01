@@ -51,5 +51,5 @@ class Home extends Controller
         });
         $todos = array_reverse($todos);
         return $this->view('home', compact('todos'));
-    }
+  }
 }

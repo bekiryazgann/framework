@@ -1,5 +1,5 @@
 let systemMessage = document.querySelector('#system-message');
-if (systemMessage !== undefined){
+if (systemMessage !== undefined) {
     setTimeout(() => {
         systemMessage.style.opacity = '0';
         setTimeout(() => {
