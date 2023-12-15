@@ -30,4 +30,13 @@ class Controller
     {
         return $this->view->show($view, $data);
     }
+
+    /**
+     * @param array $errors
+     * @return void
+     */
+    public function errors(array $errors): void
+    {
+        $this->view->errors($errors);
+    }
 }

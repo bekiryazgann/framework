@@ -14,7 +14,38 @@
         <p style="font-size: 15px; font-family: Arial, sans-serif;">{!! $message->message !!}</p>
     </div>
 @endif
-2213123
+
+<center>
+    <form action="" method="POST">
+        @csrf
+        <table>
+            <tbody>
+            <tr>
+                <td><label for="email">E-posta</label></td>
+                <td>
+                    <input type="text" id="email" name="email" placeholder="E-posta" value="{{ $formdata['email'] ?? '' }}"><br>
+                    @geterror('email')
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">Ad</label></td>
+                <td>
+                    <input type="text" id="name" name="name" placeholder="Ad" value="{{ $formdata['name'] ?? '' }}"><br>
+                    @geterror('name')
+                </td>
+            </tr>
+            <tr>
+                <td><label for="surname">Soyad</label></td>
+                <td>
+                    <input type="text" name="surname" id="surname" placeholder="Soyad" value="{{ $formdata['surname'] ?? '' }}"><br>
+                    @geterror('surname')
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit"> Gönder </button>
+    </form>
+</center>
 <script src="{{assets('js/app.js')}}" type="module"></script>
 </body>
 </html>

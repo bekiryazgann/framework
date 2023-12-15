@@ -7,6 +7,11 @@ use Jenssegers\Blade\Blade;
 class View
 {
     /**
+     * @var array
+     */
+    public array $errors = [];
+
+    /**
      * @var \Jenssegers\Blade\Blade
      */
     public Blade $blade;
@@ -39,5 +44,14 @@ class View
         foreach ($files as $file) {
             unlink($file);
         }
+    }
+
+    /**
+     * @param array $errors
+     * @return void
+     */
+    public function errors(array $errors): void
+    {
+        $this->errors = $errors;
     }
 }

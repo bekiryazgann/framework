@@ -2,6 +2,8 @@
 
 namespace src\Http;
 
+use src\Controller;
+use src\View;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Valitron\Validator;
 
@@ -11,6 +13,11 @@ class Request extends HttpRequest
      * @var \Valitron\Validator
      */
     public Validator $validator;
+
+    /**
+     * @var View
+     */
+    private View $view;
 
     /**
      * @param array $query
@@ -26,6 +33,7 @@ class Request extends HttpRequest
     public function __construct(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null)
     {
         parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
+        $this->view = new View();
         $this->validator = validator();
         if (FRAMEWORK_CSRF ?? true){
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -45,6 +53,22 @@ class Request extends HttpRequest
     public function rule($rule, $fields): Validator
     {
         return $this->validator->rule($rule, $fields);
+    }
+
+    /**
+     * @param string $view
+     * @param array $data
+     *
+     * @return string
+     */
+    public function view(string $view, array $data = []): string
+    {
+        $this->view->blade->share('formdata', $this->validator->data());
+        $this->view->blade->share('errors', $this->validator->errors());
+        $this->view->blade->directive('geterror', function($name){
+            return '<?php if (isset($errors[' . $name . '])): ?><div class="form-error-message"><?= $errors[' . $name . '][0] ?></div><?php endif; ?>';
+        });
+        return $this->view->show($view, $data);
     }
 
     /**
